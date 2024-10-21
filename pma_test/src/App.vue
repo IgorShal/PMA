@@ -31,8 +31,8 @@ export default {
       }
       this.messages.push(message)
       this.chatMessage = ""
-      const response = await axios.post("http://127.0.0.1:5000/", message)
-      this.messages.push(response.data)
+      const response = await axios.post("http://127.0.0.1:5000/", {"message": message.body})
+      this.messages.push({'sender': response.data.sender, 'body': response.data.body, 'id': this.messages.length + 1})
     },
   }
 
@@ -78,7 +78,7 @@ export default {
   margin-right: 100px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Добавляем тень для объёмности */
   margin-top: 10px;
-  text-align: right;
+  text-align: left;
 }
 
 </style>
