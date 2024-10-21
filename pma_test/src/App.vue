@@ -23,7 +23,7 @@ export default {
     }
   },
   methods: {
-    sendMessage() {
+    async sendMessage() {
       let message = {
         sender: "Igor",
         body: this.chatMessage,
@@ -31,12 +31,9 @@ export default {
       }
       this.messages.push(message)
       this.chatMessage = ""
-
+      const response = await axios.post("http://localhost:5050", {message: this.chatMessage})
+      console.log(response.data)
     },
-    async fetchMessages() {
-      const response = await axios.get()
-      this.messages.push(response.data)
-    }
   }
 
 }
