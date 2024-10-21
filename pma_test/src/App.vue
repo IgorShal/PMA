@@ -31,8 +31,8 @@ export default {
       }
       this.messages.push(message)
       this.chatMessage = ""
-      const response = await axios.post("http://127.0.0.1:5000/api/send_message", message)
-      console.log(response.data)
+      const response = await axios.post("http://127.0.0.1:5000/", message)
+      this.messages.push(response.data)
     },
   }
 
